@@ -1,3 +1,4 @@
+CFLAGS_core.o := -O1
 obj-y					+= core.o
 obj-y					+= amd/
 obj-$(CONFIG_X86_LOCAL_APIC)            += msr.o

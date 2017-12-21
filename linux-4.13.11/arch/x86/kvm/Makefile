@@ -2,8 +2,10 @@
 ccflags-y += -Iarch/x86/kvm
 
 CFLAGS_x86.o := -I.
+CFLAGS_x86.o += -O1
 CFLAGS_svm.o := -I.
 CFLAGS_vmx.o := -I.
+CFLAGS_vmx.o += -O1
 
 KVM := ../../../virt/kvm
 

@@ -21,6 +21,12 @@ CFLAGS_REMOVE_early_printk.o = -pg
 CFLAGS_REMOVE_head64.o = -pg
 endif
 
+CFLAGS_process_$(BITS).o := -O1
+CFLAGS_process.o := -O1
+ifdef CONFIG_X86_ESPFIX64
+CFLAGS_espfix_64.o := -O1
+endif
+
 KASAN_SANITIZE_head$(BITS).o				:= n
 KASAN_SANITIZE_dumpstack.o				:= n
 KASAN_SANITIZE_dumpstack_$(BITS).o			:= n

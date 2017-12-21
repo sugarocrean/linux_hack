@@ -1,6 +1,12 @@
 # Kernel does not boot with instrumentation of tlb.c.
 KCOV_INSTRUMENT_tlb.o	:= n
 
+CFLAGS_init.o := -O1
+CFLAGS_init_$(BITS).o := -O1
+CFLAGS_extable.o := -O1
+CFLAGS_pageattr.o := -O1
+CFLAGS_tlb.o := -O1
+
 obj-y	:=  init.o init_$(BITS).o fault.o ioremap.o extable.o pageattr.o mmap.o \
 	    pat.o pgtable.o physaddr.o setup_nx.o tlb.o
 
@@ -10,6 +16,7 @@ CFLAGS_physaddr.o		:= $(nostackp)
 CFLAGS_setup_nx.o		:= $(nostackp)
 
 CFLAGS_fault.o := -I$(src)/../include/asm/trace
+CFLAGS_fault.o += -O1
 
 obj-$(CONFIG_X86_PAT)		+= pat_rbtree.o
 

@@ -7,6 +7,7 @@ subdir-ccflags-y += \
 	$(call as-instr,movntdqa (%eax)$(comma)%xmm0,-DCONFIG_AS_MOVNTDQA)
 
 # Please keep these build lists sorted!
+CFLAGS_i915_memcpy.o := -O1
 
 # core driver code
 i915-y := i915_drv.o \
@@ -26,6 +27,9 @@ i915-y := i915_drv.o \
 
 i915-$(CONFIG_COMPAT)   += i915_ioc32.o
 i915-$(CONFIG_DEBUG_FS) += i915_debugfs.o intel_pipe_crc.o
+
+CFLAGS_i915_gem.o := -O1
+CFLAGS_intel_engine_cs.o := -O1
 
 # GEM code
 i915-y += i915_cmd_parser.o \

@@ -1,3 +1,8 @@
+
+
+ifdef CONFIG_X86_INTEL_PSTATE
+CFLAGS_intel_pstate.o := -O1
+endif
 # CPUfreq core
 obj-$(CONFIG_CPU_FREQ)			+= cpufreq.o freq_table.o
 

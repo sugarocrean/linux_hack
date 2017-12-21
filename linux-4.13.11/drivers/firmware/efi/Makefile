@@ -9,6 +9,10 @@
 #
 KASAN_SANITIZE_runtime-wrappers.o	:= n
 
+ifdef CONFIG_EFI_RUNTIME_WRAPPERS
+CFLAGS_runtime-wrappers.o := -O1
+endif
+
 obj-$(CONFIG_ACPI_BGRT) 		+= efi-bgrt.o
 obj-$(CONFIG_EFI)			+= efi.o vars.o reboot.o memattr.o
 obj-$(CONFIG_EFI)			+= capsule.o memmap.o

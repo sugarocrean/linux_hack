@@ -15,7 +15,10 @@ KCOV_INSTRUMENT_perf_event.o := n
 # Make sure load_percpu_segment has no stackprotector
 nostackp := $(call cc-option, -fno-stack-protector)
 CFLAGS_common.o		:= $(nostackp)
-
+CFLAGS_common.o		+= -O1
+ifdef CONFIG_CPU_FREQ
+CFLAGS_aperfmperf.o	:= -O1
+endif
 obj-y			:= intel_cacheinfo.o scattered.o topology.o
 obj-y			+= common.o
 obj-y			+= rdrand.o

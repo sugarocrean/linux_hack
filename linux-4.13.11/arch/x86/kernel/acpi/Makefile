@@ -6,6 +6,7 @@ obj-$(CONFIG_ACPI_APEI)		+= apei.o
 obj-$(CONFIG_ACPI_CPPC_LIB)	+= cppc_msr.o
 
 ifneq ($(CONFIG_ACPI_PROCESSOR),)
+CFLAGS_cstate.o := -O1
 obj-y				+= cstate.o
 endif
 
